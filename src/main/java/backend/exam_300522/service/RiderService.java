@@ -55,31 +55,31 @@ public class RiderService {
         rider.setCountry(body.getCountry());
         rider.setTeam(body.getTeam());
 
-        return  new RiderResponse(rider);
+        return  new RiderResponse(riderRepository.save(rider));
     }
 
-    public RiderResponse editRiderTime(double newTime, int id){
+    public void editRiderTime(double newTime, int id){
         Rider rider = riderRepository.findById(id).orElseThrow(() -> new Client4xxException("No rider with name " + id + " found!"));
         double currentTime = rider.getTime();
         rider.setTime(currentTime + newTime);
 
-        return  new RiderResponse(rider);
+        riderRepository.save(rider);
     }
 
-    public RiderResponse editRiderMountainPoints(int newMountainPoints, int id){
+    public void editRiderMountainPoints(int newMountainPoints, int id){
         Rider rider = riderRepository.findById(id).orElseThrow(() -> new Client4xxException("No rider with name " + id + " found!"));
         double currentPoints = rider.getMountainPoints();
         rider.setTime(currentPoints + newMountainPoints);
 
-        return  new RiderResponse(rider);
+        riderRepository.save(rider);
     }
 
-    public RiderResponse editRiderSprintPoints(int newSprintPoints, int id){
+    public void editRiderSprintPoints(int newSprintPoints, int id){
         Rider rider = riderRepository.findById(id).orElseThrow(() -> new Client4xxException("No rider with name " + id + " found!"));
         int currentPoints = rider.getSprintPoints();
         rider.setTime(currentPoints + newSprintPoints);
 
-        return  new RiderResponse(rider);
+        riderRepository.save(rider);
     }
 
     public void deleteRider(int id){

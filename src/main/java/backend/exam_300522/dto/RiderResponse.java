@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RiderResponse {
+    private int id;
     private String firstName;
     private String lastName;
     private int age;
@@ -26,6 +27,7 @@ public class RiderResponse {
 
 
     public RiderResponse(Rider rider){
+        this.id = rider.getId();
         this.firstName = rider.getFirstName();
         this.lastName = rider.getLastName();
         this.age = rider.getAge();
