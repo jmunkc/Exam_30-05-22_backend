@@ -44,9 +44,6 @@ public class MakeTestData implements ApplicationRunner {
         cofidis.addRider(c5);
         cofidis.addRider(c6);
 
-        System.out.println(cofidis.getRiders().get(0).getTeam().getTeamName());
-
-
 
         Rider l1 = new Rider(new RiderRequest("Pirre-Luc", "Perichon", "1993-03-10", "France", lottoSoudal));
         Rider l2 = new Rider(new RiderRequest("Guillaume", "Martin", "1989-06-16", "France", lottoSoudal));
@@ -79,33 +76,12 @@ public class MakeTestData implements ApplicationRunner {
         teamRepository.save(lottoSoudal);
         teamRepository.save(movistarTeam);
 
-        riderRepository.save(c1);
-        riderRepository.save(c2);
-        riderRepository.save(c3);
-        riderRepository.save(c4);
-        riderRepository.save(c5);
-        riderRepository.save(c6);
-
-        riderRepository.save(l1);
-        riderRepository.save(l2);
-        riderRepository.save(l3);
-        riderRepository.save(l4);
-        riderRepository.save(l5);
-
-
-        riderRepository.save(m1);
-        riderRepository.save(m2);
-        riderRepository.save(m3);
-        riderRepository.save(m4);
-        riderRepository.save(m5);
-
-
 
 
     }
 
     @Override
     public void run(ApplicationArguments args) {
-        makeTestData();
+//        makeTestData();
     }
 }

@@ -9,9 +9,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity
@@ -21,14 +20,20 @@ public class Team {
     @Column(nullable = false, unique = true)
     private String teamName;
 
+
     @JsonIgnore
     @OneToMany( mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rider> riders = new ArrayList<>();
+
 
     public Team(TeamRequest body){
         this.teamName = body.getTeamName();
 
     }
 
-    public void addRider(Rider rider){this.riders.add(rider);}
+    public void addRider(Rider rider){
+        riders.add(rider);
+        rider.setTeam(this);
+
+    }
 }
