@@ -6,11 +6,15 @@ import backend.exam_300522.dto.RiderResponse;
 import backend.exam_300522.entity.Rider;
 import backend.exam_300522.error.Client4xxException;
 import backend.exam_300522.repository.RiderRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -30,6 +34,12 @@ public class RiderService {
             riders = riderRepository.findAll();
         }
         return RiderResponse.getRidersFromEntities(riders);
+    }
+
+    public Page<RiderResponse> getPageRiders(PageRequest pageRequest){
+        Page<Rider> riders = riderRepository.findAll(pageRequest);
+
+        return new PageImpl<>(riders.stream().map(RiderResponse::new).collect(Collectors.toList()));
     }
 
 

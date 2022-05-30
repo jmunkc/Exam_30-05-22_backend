@@ -42,6 +42,14 @@ public class Rider {
     @JoinColumn(name = "team_id", referencedColumnName = "teamName")
     private Team team;
 
+    public Rider(String firstName, String lastName, LocalDate dob, String country, Team team){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = Period.between(dob, LocalDate.now()).getYears();
+        this.country = country;
+        this.team =team;
+    }
+
     public Rider(RiderRequest body){
         this.firstName = body.getFirstName();
         this.lastName = body.getLastName();
