@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class TeamResponse {
 
     private String teamName;
-    private Set<Rider> riders;
+    private List<Rider> riders;
 
     public TeamResponse(Team team){
         this.teamName = team.getTeamName();

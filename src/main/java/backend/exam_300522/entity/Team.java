@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
@@ -21,7 +23,7 @@ public class Team {
 
     @JsonIgnore
     @OneToMany( mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Rider> riders = new HashSet<>();
+    private List<Rider> riders = new ArrayList<>();
 
     public Team(TeamRequest body){
         this.teamName = body.getTeamName();

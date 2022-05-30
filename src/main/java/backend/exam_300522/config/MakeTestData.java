@@ -28,9 +28,7 @@ public class MakeTestData implements ApplicationRunner {
         Team lottoSoudal = new Team(new TeamRequest("Lotto Soudal"));
         Team movistarTeam = new Team(new TeamRequest("Movistar Team"));
 
-        teamRepository.save(cofidis);
-        teamRepository.save(lottoSoudal);
-        teamRepository.save(movistarTeam);
+
 
         Rider c1 = new Rider(new RiderRequest("Piet", "Allegart", "1995-01-20", "Germany", cofidis));
         Rider c2 = new Rider(new RiderRequest("Sander", "Armee", "1985-12-10", "Germany", cofidis));
@@ -39,12 +37,16 @@ public class MakeTestData implements ApplicationRunner {
         Rider c5 = new Rider(new RiderRequest("Andre", "Carvalho", "1997-10-31", "Portugal", cofidis));
         Rider c6 = new Rider(new RiderRequest("Jonas", "Munk", "1986-12-11", "Denmark", cofidis));
 
-        riderRepository.save(c1);
-        riderRepository.save(c2);
-        riderRepository.save(c3);
-        riderRepository.save(c4);
-        riderRepository.save(c5);
-        riderRepository.save(c6);
+        cofidis.addRider(c1);
+        cofidis.addRider(c2);
+        cofidis.addRider(c3);
+        cofidis.addRider(c4);
+        cofidis.addRider(c5);
+        cofidis.addRider(c6);
+
+        System.out.println(cofidis.getRiders().get(0).getTeam().getTeamName());
+
+
 
         Rider l1 = new Rider(new RiderRequest("Pirre-Luc", "Perichon", "1993-03-10", "France", lottoSoudal));
         Rider l2 = new Rider(new RiderRequest("Guillaume", "Martin", "1989-06-16", "France", lottoSoudal));
@@ -52,11 +54,13 @@ public class MakeTestData implements ApplicationRunner {
         Rider l4 = new Rider(new RiderRequest("Ion", "Izagirre", "1995-11-01", "Spain", lottoSoudal));
         Rider l5 = new Rider(new RiderRequest("Simon", "Geschke", "1996-08-21", "Germany", lottoSoudal));
 
-        riderRepository.save(l1);
-        riderRepository.save(l2);
-        riderRepository.save(l3);
-        riderRepository.save(l4);
-        riderRepository.save(l5);
+        lottoSoudal.addRider(l1);
+        lottoSoudal.addRider(l2);
+        lottoSoudal.addRider(l3);
+        lottoSoudal.addRider(l4);
+        lottoSoudal.addRider(l5);
+
+
 
 
         Rider m1 = new Rider(new RiderRequest("Nelson", "Oliveira", "1994-11-25", "Portugal", movistarTeam));
@@ -64,6 +68,30 @@ public class MakeTestData implements ApplicationRunner {
         Rider m3 = new Rider(new RiderRequest("Imanol", "Erviti", "1994-03-13", "Spain", movistarTeam));
         Rider m4 = new Rider(new RiderRequest("Gorka", "Izagirre", "1993-07-16", "Spain", movistarTeam));
         Rider m5 = new Rider(new RiderRequest("Matteo", "Joergenson", "1997-02-03", "USA", movistarTeam));
+
+        movistarTeam.addRider(m1);
+        movistarTeam.addRider(m2);
+        movistarTeam.addRider(m3);
+        movistarTeam.addRider(m4);
+        movistarTeam.addRider(m5);
+
+        teamRepository.save(cofidis);
+        teamRepository.save(lottoSoudal);
+        teamRepository.save(movistarTeam);
+
+        riderRepository.save(c1);
+        riderRepository.save(c2);
+        riderRepository.save(c3);
+        riderRepository.save(c4);
+        riderRepository.save(c5);
+        riderRepository.save(c6);
+
+        riderRepository.save(l1);
+        riderRepository.save(l2);
+        riderRepository.save(l3);
+        riderRepository.save(l4);
+        riderRepository.save(l5);
+
 
         riderRepository.save(m1);
         riderRepository.save(m2);
@@ -78,6 +106,6 @@ public class MakeTestData implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-//        makeTestData();
+        makeTestData();
     }
 }

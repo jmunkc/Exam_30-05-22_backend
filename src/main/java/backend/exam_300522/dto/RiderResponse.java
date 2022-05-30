@@ -19,7 +19,7 @@ public class RiderResponse {
     private String lastName;
     private int age;
     private String country;
-    private Team team;
+    private String team;
 
 
     public RiderResponse(Rider rider){
@@ -27,7 +27,7 @@ public class RiderResponse {
         this.lastName = rider.getLastName();
         this.age = rider.getAge();
         this.country = rider.getCountry();
-        this.team = rider.getTeam();
+        this.team = rider.getTeam().getTeamName();
     }
 
     public static List<RiderResponse> getRidersFromEntities(List<Rider> riders){

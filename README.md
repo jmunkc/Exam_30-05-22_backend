@@ -10,7 +10,7 @@ This is the backend part of the 24h exam in "Programming 2" for DAT21v2 at KEA, 
 Frontend repository can be found [here](https://github.com/jmunkc/Exam_30-05-22_frontend.git)
 
 ## Author
-####Jonas Munk Christensen
+###Jonas Munk Christensen
 
 GitHub: [@jmunkc](https://github.com/jmunkc)
 
