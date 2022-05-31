@@ -1,10 +1,12 @@
 package backend.exam_300522.entity;
 
 import backend.exam_300522.dto.RiderRequest;
+import backend.exam_300522.repository.TeamRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -56,7 +58,7 @@ public class Rider {
         this.dob = LocalDate.parse(body.getDob());
         this.age = Period.between(LocalDate.parse(body.getDob()), LocalDate.now()).getYears();
         this.country = body.getCountry();
-        this.team = body.getTeam();
+//        this.team = body.getTeam();
 
     }
 }

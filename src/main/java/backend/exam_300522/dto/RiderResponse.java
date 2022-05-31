@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ public class RiderResponse {
     private String firstName;
     private String lastName;
     private int age;
+    private LocalDate dob;
     private String country;
     private String team;
     private double time;
@@ -31,6 +33,7 @@ public class RiderResponse {
         this.firstName = rider.getFirstName();
         this.lastName = rider.getLastName();
         this.age = rider.getAge();
+        this.dob = rider.getDob();
         this.country = rider.getCountry();
         this.team = rider.getTeam().getTeamName();
         this.time = rider.getTime();
