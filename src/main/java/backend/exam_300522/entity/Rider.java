@@ -58,7 +58,7 @@ public class Rider {
         this.dob = LocalDate.parse(body.getDob());
         this.age = Period.between(LocalDate.parse(body.getDob()), LocalDate.now()).getYears();
         this.country = body.getCountry();
-//        this.team = body.getTeam();
+        this.team = body.getTeam();
 
     }
 }
