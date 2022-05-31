@@ -36,7 +36,7 @@ class RiderRepositoryTest {
 
         Rider c1 = new Rider("Piet", "Allegart", LocalDate.of(1995, 01, 20), "Germany", cofidis);
         Rider c2 = new Rider("Sander", "Armee", LocalDate.of(1985, 12, 10), "Germany", cofidis);
-        Rider l1 = new Rider(new RiderRequest("Pirre-Luc", "Perichon", "1993-03-10", "France", lottoSoudal));
+        Rider l1 = new Rider("Pirre-Luc", "Perichon", LocalDate.of(1993, 03, 10), "France", lottoSoudal);
 
         riderRepository.save(c1);
         riderRepository.save(c2);

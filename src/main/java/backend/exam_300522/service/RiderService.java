@@ -6,6 +6,7 @@ import backend.exam_300522.dto.RiderResponse;
 import backend.exam_300522.entity.Rider;
 import backend.exam_300522.error.Client4xxException;
 import backend.exam_300522.repository.RiderRepository;
+import backend.exam_300522.repository.TeamRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -21,8 +22,11 @@ import java.util.stream.Collectors;
 public class RiderService {
     RiderRepository riderRepository;
 
-    public RiderService(RiderRepository riderRepository){
+    TeamRepository teamRepository;
+
+    public RiderService(RiderRepository riderRepository, TeamRepository teamRepository){
         this.riderRepository = riderRepository;
+        this.teamRepository = teamRepository;
     }
 
     public List<RiderResponse> getRiders(String teamName){
@@ -52,8 +56,7 @@ public class RiderService {
 
 
     public RiderResponse addRider(RiderRequest body){
-        Rider rider = riderRepository.save(new Rider((body)));
-
+        Rider rider = riderRepository.save(new Rider(body.getFirstName(), body.getLastName(), LocalDate.parse(body.getDob()), body.getCountry(), teamRepository.findById(body.getTeam()).get()));
         return new RiderResponse(rider);
     }
 
@@ -63,7 +66,7 @@ public class RiderService {
         rider.setLastName(body.getLastName());
         rider.setDob(LocalDate.parse(body.getDob()));
         rider.setCountry(body.getCountry());
-        rider.setTeam(body.getTeam());
+        rider.setTeam(teamRepository.findById(body.getTeam()).get());
 
         return  new RiderResponse(riderRepository.save(rider));
     }

@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 
 @Getter
 @Setter
@@ -18,5 +16,5 @@ public class RiderRequest {
     private String lastName;
     private String dob;
     private String country;
-    private Team team;
+    private String team;
 }
